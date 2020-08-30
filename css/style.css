@@ -12,7 +12,7 @@ body{
     background: linear-gradient(to right, #0575e6, #021b79);
     */
 
-    background-image: url(D:/DEV/JS%20Projects/My-To-do/images/305.jpg);
+    background-image: url(D:/DEV/JS%20Projects/My-To-do/to-do-list-js/images/305.jpg);
     background-size: 100% auto;
     background-position:left bottom; 
     -webkit-background-size: cover;
@@ -106,7 +106,7 @@ ul{
 .remove{
     width: 30px;
     height: 30px;
-    background: url(D:/DEV/JS%20Projects/My-To-do/images/icon-delete.png) no-repeat;
+    background: url(D:/DEV/JS%20Projects/My-To-do/to-do-list-js/images/icon-delete.png) no-repeat;
     border-style: none;
 
 }
