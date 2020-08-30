@@ -18,8 +18,8 @@ var getTodos = function(){
 var showTodos = function(){
     var todos = getTodos();
     var html = '<ul>';
-    todos.forEach(function(elemento, index){
-        html += '<li> <label class="container"><input type="checkbox"> <span class="checkmark"></span> </label>' + elemento + '<button class="remove" id="'+ index +'">Remover</button></li>'; 
+    todos.forEach(function(content, index){
+        html += '<div class="container-blur"> <li> <label class="container"><input type="checkbox"> <span class="checkmark"></span> </label>' + content + '<button class="remove" id="'+ index +'"><i class="ic-delete"></i></button></li></div>'; 
     });
     html += '</ul>'; 
     document.getElementById('todos').innerHTML = html; 
