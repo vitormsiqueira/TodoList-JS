@@ -60,13 +60,13 @@ h4{
     color: white;
 }
 
-h1, #msg{
+h1, #msg, #msg2{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.todos{
+.todos, .complete-todos{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -147,6 +147,14 @@ small{
     border-radius: 5px;
     border-color: transparent;
     margin-left: 9px;
+}
+
+.btn-concluir{
+    background-color: transparent;
+    height: 40px;
+    width: 80px;
+    border: none;
+    color: white;
 }
 
 .input-form{

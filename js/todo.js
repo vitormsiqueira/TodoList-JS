@@ -18,7 +18,7 @@ var getTodos = function(){
     }
 }
 
-var getCompleteTodos = function(){
+var getCompleteTodos = function () {
     var complete_todos = []; 
     var complete_todos_string = localStorage.getItem('complete-todos');
     if(complete_todos_string != null){ 
@@ -42,18 +42,14 @@ var showTodos = function(){
     };
 }
 
-var showCompleteTodos = function(){
+var showCompleteTodos = function () {
     var complete_todos = getCompleteTodos();
     var html = '<ul>';
     complete_todos.forEach(function(content, index){
-        html += '<div class="container-blur"> <li> <label class="container"><input type="checkbox" name="checkBoxMarked" > <span class="checkmark"></span> </label>' + content + '<button class="remove" id="'+ index +'"><i class="ic-delete"></i></button></li></div>'; 
+        html += '<div class="container-blur"> <li> <label class="container"><input type="checkbox" name="checkBoxMarked" onClick="checkBoxMarked(this)"> <span class="checkmark"></span> </label>' + content + '<button class="remove" id="'+ index +'"><i class="ic-delete"></i></button></li></div>'; 
     });
     html += '</ul>'; 
-    document.getElementById('todos').innerHTML = html; 
-    var buttons = document.getElementsByClassName('remove');
-    for (var i=0; i < buttons.length; i++){ 
-        buttons[i].addEventListener('click', removeTodo);
-    };
+    document.getElementById('complete-todos').innerHTML = html; 
 }
 
 var removeTodo = function(){
@@ -74,11 +70,14 @@ var hasTodo = function(){
     }
 }
 
-var hasCompleteTodo = function () {
+var hasCompleteTodo = function() {
     var complete_todos = getCompleteTodos();
-    if(complete_todos != ''){
-        text = '<h2>Tarefas concluídas:</h2>';
-        document.getElementById('msg').innerHTML = text;
+    if(complete_todos == ''){
+        text = '<h2>Não há tarefas cadastradas!</h2>';
+        document.getElementById('msg2').innerHTML = text;
+    } else {
+        text = '<h2>Tarefas pendentes:</h2>';
+        document.getElementById('msg2').innerHTML = text;
     }
 }
 
@@ -89,7 +88,6 @@ var checkBoxMarked = function(checkbox){
     if (checkbox.checked)
     {
         alert("Tarefa marcada como concluída");
-        showCompleteTodos();
     } else {
         alert("Tarefa marcada para fazer");
     }
@@ -104,6 +102,7 @@ window.addEventListener('keydown', function(event){
     };
 }); 
 
-
 hasTodo(); 
 showTodos(); 
+hasCompleteTodo();
+showCompleteTodos();
