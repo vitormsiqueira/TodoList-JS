@@ -13,6 +13,8 @@ var getTodos = function(){
     var todos_string = localStorage.getItem('todos');
     if(todos_string != null){ 
         return JSON.parse(todos_string);
+    } else {
+        return todos;
     }
 }
 var showTodos = function(){
@@ -45,12 +47,6 @@ var hasTodo = function(){
         document.getElementById('msg').innerHTML = text;
     }
 }
-document.getElementById('add').addEventListener('click', addTodo);
-window.addEventListener('keydown', function(event){ 
-    if(event.keyCode == 13){
-        addTodo();
-    };
-}); 
 
 var checkBoxMarked = function(checkbox){
 
@@ -63,10 +59,15 @@ var checkBoxMarked = function(checkbox){
         alert("Tarefa marcada para fazer");
     }
 
-    //alert("Tarefa marcada como concluida");
-  
-    
+    //alert("Tarefa marcada como concluida"); 
   }
+
+document.getElementById('add').addEventListener('click', addTodo);
+window.addEventListener('keydown', function(event){ 
+    if(event.keyCode == 13){
+        addTodo();
+    };
+}); 
 
 hasTodo(); 
 showTodos(); 
