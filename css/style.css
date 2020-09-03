@@ -103,7 +103,7 @@ ul{
     padding-bottom: 30px;
 }
 
-.remove{
+.remove, .remove2{
     width: 30px;
     height: 30px;
     background: url(D:/DEV/JS%20Projects/My-To-do/to-do-list-js/images/icon-delete.png) no-repeat;

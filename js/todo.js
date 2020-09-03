@@ -46,10 +46,14 @@ var showCompleteTodos = function () {
     var complete_todos = getCompleteTodos();
     var html = '<ul>';
     complete_todos.forEach(function(content, index){
-        html += '<div class="container-blur"> <li> <label class="container"><input type="checkbox" name="checkBoxMarked" onClick="checkBoxMarked(this)"> <span class="checkmark"></span> </label>' + content + '<button class="remove" id="'+ index +'"><i class="ic-delete"></i></button></li></div>'; 
+        html += '<div class="container-blur"> <li> <label class="container"><input type="checkbox" name="checkBoxMarked" onClick="checkBoxMarked(this)"> <span class="checkmark"></span> </label>' + content + '<button class="remove2" id="'+ index +'"><i class="ic-delete"></i></button></li></div>'; 
     });
     html += '</ul>'; 
     document.getElementById('complete-todos').innerHTML = html; 
+    var buttons = document.getElementsByClassName('remove2');
+    for (var i=0; i < buttons.length; i++){ 
+        buttons[i].addEventListener('click', removeCompleteTodo);
+    };
 }
 
 var removeTodo = function(){
@@ -57,6 +61,14 @@ var removeTodo = function(){
     var todos = getTodos(); 
     todos.splice(id, 1);
     localStorage.setItem('todos', JSON.stringify(todos)); 
+    document.location.reload(true);
+}
+
+var removeCompleteTodo = function(){
+    var id = this.getAttribute('id');
+    var complete_todos = getCompleteTodos(); 
+    complete_todos.splice(id, 1);
+    localStorage.setItem('complete-todos', JSON.stringify(complete_todos)); 
     document.location.reload(true);
 }
 
