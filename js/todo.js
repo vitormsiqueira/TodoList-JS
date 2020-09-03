@@ -32,7 +32,7 @@ var showTodos = function(){
     var todos = getTodos();
     var html = '<ul>';
     todos.forEach(function(content, index){
-        html += '<div class="container-blur"> <li> <label class="container"><input type="checkbox" name="checkBoxMarked" onClick="checkBoxMarked(this)"> <span class="checkmark"></span> </label>' + content + '<button class="remove" id="'+ index +'"><i class="ic-delete"></i></button></li></div>'; 
+        html += '<div class="container-blur"> <li> <label class="container"><input type="checkbox" class="marked" name="checkBoxMarked" onClick="checkBoxMarked(this)"> <span class="checkmark"></span> </label>' + content + '<button class="remove" id="'+ index +'"><i class="ic-delete"></i></button></li></div>'; 
     });
     html += '</ul>'; 
     document.getElementById('todos').innerHTML = html; 
@@ -59,6 +59,7 @@ var removeTodo = function(){
     localStorage.setItem('todos', JSON.stringify(todos)); 
     document.location.reload(true);
 }
+
 var hasTodo = function(){ 
     var todos = getTodos();
     if(todos == ''){
@@ -73,10 +74,9 @@ var hasTodo = function(){
 var hasCompleteTodo = function() {
     var complete_todos = getCompleteTodos();
     if(complete_todos == ''){
-        text = '<h2>Não há tarefas cadastradas!</h2>';
-        document.getElementById('msg2').innerHTML = text;
+       
     } else {
-        text = '<h2>Tarefas pendentes:</h2>';
+        text = '<h2>Tarefas concluídas:</h2>';
         document.getElementById('msg2').innerHTML = text;
     }
 }
@@ -88,6 +88,11 @@ var checkBoxMarked = function(checkbox){
     if (checkbox.checked)
     {
         alert("Tarefa marcada como concluída");
+        var buttons = document.getElementsByClassName('marked');
+        for (var i=0; i < buttons.length; i++){ 
+            console.log(buttons);
+            buttons[i].addEventListener('click', removeTodo);
+        };
     } else {
         alert("Tarefa marcada para fazer");
     }
