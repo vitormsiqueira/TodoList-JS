@@ -100,10 +100,10 @@ var checkBoxMarked = function(checkbox){
     if (checkbox.checked)
     {
         alert("Tarefa marcada como concluída");
-        var buttons = document.getElementsByClassName('marked');
+        var buttons = document.getElementsByClassName('remove');
         for (var i=0; i < buttons.length; i++){ 
             console.log(buttons);
-            buttons[i].addEventListener('click', removeTodo);
+            buttons[i].addEventListener('marked', removeTodo);
         };
     } else {
         alert("Tarefa marcada para fazer");
