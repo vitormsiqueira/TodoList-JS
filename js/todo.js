@@ -32,9 +32,9 @@ var showTodos = function(){
     var todos = getTodos();
     var html = '<ul>';
     todos.forEach(function(content, index){
-        html += '<div class="container-blur"> <li> <label class="container"><input type="checkbox" class="marked" name="checkBoxMarked" onClick="checkBoxMarked(this)"> <span class="checkmark"></span> </label>' + content + '<button class="remove" id="'+ index +'"><i class="ic-delete"></i></button></li></div>'; 
+        html += '<div class="container-blur"> <li> <label class="container"><input type="checkbox" id="marked" name="checkBoxMarked" onClick="checkBoxMarked(this)"> <span class="checkmark"></span> </label>' + content + '<button class="remove" id="'+ index +'"><i class="ic-delete"></i></button></li></div>'; 
     });
-    html += '</ul>'; 
+    html += '</ul>'; /
     document.getElementById('todos').innerHTML = html; 
     var buttons = document.getElementsByClassName('remove');
     for (var i=0; i < buttons.length; i++){ 
@@ -93,6 +93,12 @@ var hasCompleteTodo = function() {
     }
 }
 
+var check = document.getElementById("marked");
+document.getElementById("btnSubmit").onclick = function () {
+
+}
+
+
 var checkBoxMarked = function(checkbox){
 
     //var var_check = document.getElementsByName('mycheck');
@@ -100,10 +106,10 @@ var checkBoxMarked = function(checkbox){
     if (checkbox.checked)
     {
         alert("Tarefa marcada como concluída");
-        var buttons = document.getElementsByClassName('remove');
+        var buttons = document.getElementsByClassName('marked');
         for (var i=0; i < buttons.length; i++){ 
             console.log(buttons);
-            buttons[i].addEventListener('marked', removeTodo);
+            buttons[i].addEventListener('click', removeTodo);
         };
     } else {
         alert("Tarefa marcada para fazer");
