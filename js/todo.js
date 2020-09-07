@@ -97,18 +97,19 @@ var hasCompleteTodo = function() {
 
 var checkBoxMarked = function(checkbox){
 
-    //var var_check = document.getElementsByName('mycheck');
-
-    if (checkbox.checked)
+    if (checkbox)
     {
         alert("Tarefa marcada como concluída");
-        
+        var id = checkbox.getAttribute('id');
+        var todos = getTodos(); 
+        todos.splice(id, 1);
+        localStorage.setItem('todos', JSON.stringify(todos)); 
+        document.location.reload(true);
     } else {
         alert("Tarefa marcada para fazer");
     }
+}
 
-    //alert("Tarefa marcada como concluida"); 
-  }
 
 document.getElementById('add').addEventListener('click', addTodo);
 window.addEventListener('keydown', function(event){ 
